@@ -14,7 +14,11 @@ class CreateTbResearchSourcesTable extends Migration
     public function up()
     {
         Schema::create('tb_research_sources', function (Blueprint $table) {
-            $table->id();
+            $table->increments('research_sources_id');
+            $table->string('research_source_name');
+            $table->string('Year_source');
+            $table->string('type_research_source');
+            $table->string('ex_research')->nullable();
             $table->timestamps();
         });
     }
