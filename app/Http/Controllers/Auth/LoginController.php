@@ -76,14 +76,14 @@ class LoginController extends Controller
                 if ($c_ad_role == 0) {
                     DB::insert('insert into model_has_roles (role_id,model_type, model_id ) values (?, ?,?)', [1, '', $user->employee_id]);
                 }
-                return view('admin');
+                return view('admin')->with(['role_id'=>1]);
             } elseif ($user != null && $admin == null && $director != null) {
                 //director
                 $c_ad_role = DB::table('model_has_roles')->where('role_id', '=', '3')->where('model_id', '=', $user->employee_id)->count();
                 if ($c_ad_role == 0) {
                     DB::insert('insert into model_has_roles (role_id,model_type, model_id ) values (?, ?,?)', [3, '', $user->employee_id]);
 
-                    return view('director');
+                    return view('director')->with(['role_id'=>3]);
                 }
             } elseif ($user == null && $admin == null && $director != null) {
                 //director
@@ -91,14 +91,14 @@ class LoginController extends Controller
                 if ($c_ad_role == 0) {
                     DB::insert('insert into model_has_roles (role_id,model_type, model_id ) values (?, ?,?)', [3, '', $director->employee_referees_id]);
                 }
-                return view('director');
+                return view('director')->with(['role_id'=>1]);
             } elseif ($user != null && $admin == null && $director == null) {
                 //user
                 $c_ad_role = DB::table('model_has_roles')->where('role_id', '=', '3')->where('model_id', '=', $user->employee_id)->count();
                 if ($c_ad_role == 0) {
                     DB::insert('insert into model_has_roles (role_id,model_type, model_id ) values (?, ?,?)', [2, '', $user->employee_id]);
                 }
-                return view('user');
+                return view('user')->with(['role_id'=>2]);
             }
         } else {
             return view('auth.login');

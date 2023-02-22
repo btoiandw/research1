@@ -31,11 +31,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    {{-- @if (Auth()->user()->role_id == 1)
+                    @if ($role_id == 1)
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">จัดการผู้ใช้</a>
                         </li>
-                    @endif --}}
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
                     </li>
@@ -52,6 +52,7 @@
 
     <div id="app">
         <main class="py-4">
+            {{ $role_id }}
             @yield('content')
         </main>
     </div>
